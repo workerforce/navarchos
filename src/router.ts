@@ -1,22 +1,22 @@
-import { Router } from 'itty-router';
+import { Router } from 'itty-router'
 
-// now let's create a router (note the lack of "new")
-const router = Router();
+// Create a new router
+const router = Router()
 
-// GET collection index
-router.get('/api/todos', () => new Response('Todos Index!'));
+// Handle Docker Push requests
+router.post('/v2/:namespace/:repo/blobs/uploads/', async (request, env, ctx) => {
+  // Extract namespace and repo from the URL
+  const { namespace, repo } = ctx.params
 
-// GET item
-router.get('/api/todos/:id', ({ params }) => new Response(`Todo #${params.id}`));
+  console.log(`Received Docker push for ${namespace}/${repo}`)
 
-// POST to the collection (we'll use async here)
-router.post('/api/todos', async (request) => {
-	const content = await request.json();
+  // Here you would handle the upload. For now, just return a success message.
+  return new Response(`Docker push received for ${namespace}/${repo}`, {
+    status: 202,
+  })
+})
 
-	return new Response('Creating Todo: ' + JSON.stringify(content));
-});
-
-// 404 for everything else
-router.all('*', () => new Response('Not Found.', { status: 404 }));
+// Fallback for all other requests
+router.all('*', () => new Response('Not Found', { status: 404 }))
 
 export default router;
