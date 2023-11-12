@@ -1,0 +1,15 @@
+willwalker research > time docker push willswire/test
+Using default tag: latest
+The push refers to repository [docker.io/willswire/test]
+32727d88ae04: Pushed 
+5f4d9fc4d98d: Layer already exists 
+latest: digest: sha256:85aab6ed0a81a711d16a38e74d43e569555816e8c3dcb126a99e8345e5304c66 size: 739
+docker push willswire/test  0.06s user 0.03s system 0% cpu 10.875 total
+
+willwalker research > time docker push navarchos.willswire.workers.dev/willswire/alpine
+Using default tag: latest
+The push refers to repository [navarchos.willswire.workers.dev/willswire/alpine]
+32727d88ae04: Pushing  262.6MB
+5f4d9fc4d98d: Pushing  7.949MB
+unknown blob
+docker push navarchos.willswire.workers.dev/willswire/alpine  0.06s user 0.03s system 1% cpu 7.956 total
